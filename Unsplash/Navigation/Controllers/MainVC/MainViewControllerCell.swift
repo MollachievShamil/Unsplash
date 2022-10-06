@@ -33,8 +33,7 @@ class MainViewControllerCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
             imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0)
         ])
     }
 }
-

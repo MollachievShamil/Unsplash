@@ -17,6 +17,9 @@ protocol MainPresenterProtocol: AnyObject {
     func goToDetailsModule(model: PhotoModel)
     func makeImage(img: Data?) -> UIImage?
     var photoModels: [PhotoModel] {get set}
+    func fetchSearchingPhotoModels(name: String)
+    func addMorePhotoForInfinityScroll()
+    func addMorePhotoForInfinityScrollWithSearching(name: String, page: Int)
 }
 
 class MainPresenter: MainPresenterProtocol {
@@ -30,6 +33,28 @@ class MainPresenter: MainPresenterProtocol {
         self.view = view
         self.router = router
         self.networkService = networkService
+        fetchPhotoModels()
+    }
+    
+    // MARK: - Searching Photos
+    func fetchSearchingPhotoModels(name: String) {
+        photoModels = []
+        view?.reloadCollectionView()
+        networkService.fetchSearchingModelsOnPage(searchText: name, page: 1, completion: { [weak self] model in
+            guard let model = model else { return }
+            let photoModel = model.results
+            self?.photoModels.append(contentsOf: photoModel)
+            self?.getImages()
+        })
+    }
+
+    func addMorePhotoForInfinityScrollWithSearching(name: String, page: Int) {
+        networkService.fetchSearchingModelsOnPage(searchText: name, page: page, completion: { [weak self] model in
+            guard let model = model else { return }
+            let photoModel = model.results
+            self?.photoModels.append(contentsOf: photoModel)
+            self?.getImages()
+        })
     }
     
     // MARK: - Random Photos
@@ -42,7 +67,15 @@ class MainPresenter: MainPresenterProtocol {
             self?.getImages()
         }
     }
-    
+ 
+    func addMorePhotoForInfinityScroll() {
+        networkService.fetchModels { [weak self] model in
+            guard let model = model else { return }
+            self?.photoModels.append(contentsOf: model)
+            self?.getImages()
+        }
+    }
+
     // MARK: - Fetching Photo data and Transform them in Images
     
     func makeImage(img: Data?) -> UIImage? {

@@ -13,6 +13,14 @@
 		B328E69528EE876F00510143 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B328E69328EE876F00510143 /* LaunchScreen.storyboard */; };
 		B33BDFC528EEA219006AC09B /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33BDFC428EEA219006AC09B /* ViewControllerFactory.swift */; };
 		B33BDFC728EEA22A006AC09B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33BDFC628EEA22A006AC09B /* Router.swift */; };
+		B36B0C4E28EEB70F009A566C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C4D28EEB70F009A566C /* Networking.swift */; };
+		B36B0C5228EEB76B009A566C /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C5128EEB76B009A566C /* Storage.swift */; };
+		B36B0C5928EEB882009A566C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C5828EEB882009A566C /* MainViewController.swift */; };
+		B36B0C5B28EEB8C4009A566C /* FavouriteImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C5A28EEB8C4009A566C /* FavouriteImagesViewController.swift */; };
+		B36B0C5D28EEB93E009A566C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C5C28EEB93E009A566C /* DetailsViewController.swift */; };
+		B36B0C5F28EEBBE5009A566C /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C5E28EEBBE5009A566C /* MainPresenter.swift */; };
+		B36B0C6128EEBD15009A566C /* FavouriteImagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6028EEBD15009A566C /* FavouriteImagesPresenter.swift */; };
+		B36B0C6328EEBE87009A566C /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6228EEBE87009A566C /* DetailsPresenter.swift */; };
 		C2DE054AA17C45AC06065E12 /* Pods_Unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C56A54BC503601F7AF1373 /* Pods_Unsplash.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +34,14 @@
 		B328E69628EE876F00510143 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B33BDFC428EEA219006AC09B /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		B33BDFC628EEA22A006AC09B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B36B0C4D28EEB70F009A566C /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		B36B0C5128EEB76B009A566C /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		B36B0C5828EEB882009A566C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B36B0C5A28EEB8C4009A566C /* FavouriteImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteImagesViewController.swift; sourceTree = "<group>"; };
+		B36B0C5C28EEB93E009A566C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B36B0C5E28EEBBE5009A566C /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		B36B0C6028EEBD15009A566C /* FavouriteImagesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteImagesPresenter.swift; sourceTree = "<group>"; };
+		B36B0C6228EEBE87009A566C /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		C0967EFDC186A971790275B9 /* Pods-Unsplash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.release.xcconfig"; path = "Target Support Files/Pods-Unsplash/Pods-Unsplash.release.xcconfig"; sourceTree = "<group>"; };
 		F7C56A54BC503601F7AF1373 /* Pods_Unsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -80,8 +96,10 @@
 		B328E68728EE876E00510143 /* Unsplash */ = {
 			isa = PBXGroup;
 			children = (
-				B33BDFC428EEA219006AC09B /* ViewControllerFactory.swift */,
-				B33BDFC628EEA22A006AC09B /* Router.swift */,
+				B36B0C4C28EEB687009A566C /* Navigation */,
+				B36B0C4F28EEB71F009A566C /* Networking */,
+				B36B0C5028EEB735009A566C /* Storage */,
+				B36B0C5728EEB85E009A566C /* Extensions */,
 				B328E68828EE876E00510143 /* AppDelegate.swift */,
 				B328E68A28EE876E00510143 /* SceneDelegate.swift */,
 				B328E69128EE876F00510143 /* Assets.xcassets */,
@@ -89,6 +107,76 @@
 				B328E69628EE876F00510143 /* Info.plist */,
 			);
 			path = Unsplash;
+			sourceTree = "<group>";
+		};
+		B36B0C4C28EEB687009A566C /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B33BDFC628EEA22A006AC09B /* Router.swift */,
+				B33BDFC428EEA219006AC09B /* ViewControllerFactory.swift */,
+				B36B0C5328EEB7B4009A566C /* Controllers */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B36B0C4F28EEB71F009A566C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				B36B0C4D28EEB70F009A566C /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		B36B0C5028EEB735009A566C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				B36B0C5128EEB76B009A566C /* Storage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		B36B0C5328EEB7B4009A566C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B36B0C5428EEB7FA009A566C /* MainVC */,
+				B36B0C5528EEB819009A566C /* FavoriteImagesVC */,
+				B36B0C5628EEB83E009A566C /* DetailsVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B36B0C5428EEB7FA009A566C /* MainVC */ = {
+			isa = PBXGroup;
+			children = (
+				B36B0C5828EEB882009A566C /* MainViewController.swift */,
+				B36B0C5E28EEBBE5009A566C /* MainPresenter.swift */,
+			);
+			path = MainVC;
+			sourceTree = "<group>";
+		};
+		B36B0C5528EEB819009A566C /* FavoriteImagesVC */ = {
+			isa = PBXGroup;
+			children = (
+				B36B0C5A28EEB8C4009A566C /* FavouriteImagesViewController.swift */,
+				B36B0C6028EEBD15009A566C /* FavouriteImagesPresenter.swift */,
+			);
+			path = FavoriteImagesVC;
+			sourceTree = "<group>";
+		};
+		B36B0C5628EEB83E009A566C /* DetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				B36B0C5C28EEB93E009A566C /* DetailsViewController.swift */,
+				B36B0C6228EEBE87009A566C /* DetailsPresenter.swift */,
+			);
+			path = DetailsVC;
+			sourceTree = "<group>";
+		};
+		B36B0C5728EEB85E009A566C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,10 +311,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B36B0C6128EEBD15009A566C /* FavouriteImagesPresenter.swift in Sources */,
+				B36B0C5B28EEB8C4009A566C /* FavouriteImagesViewController.swift in Sources */,
+				B36B0C5928EEB882009A566C /* MainViewController.swift in Sources */,
+				B36B0C5D28EEB93E009A566C /* DetailsViewController.swift in Sources */,
+				B36B0C4E28EEB70F009A566C /* Networking.swift in Sources */,
 				B33BDFC528EEA219006AC09B /* ViewControllerFactory.swift in Sources */,
+				B36B0C5F28EEBBE5009A566C /* MainPresenter.swift in Sources */,
 				B33BDFC728EEA22A006AC09B /* Router.swift in Sources */,
 				B328E68928EE876E00510143 /* AppDelegate.swift in Sources */,
 				B328E68B28EE876E00510143 /* SceneDelegate.swift in Sources */,
+				B36B0C5228EEB76B009A566C /* Storage.swift in Sources */,
+				B36B0C6328EEBE87009A566C /* DetailsPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

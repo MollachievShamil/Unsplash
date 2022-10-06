@@ -161,7 +161,8 @@ extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
         guard position >= 0 else { return }
-        guard semaphore, position > (collectionView.contentSize.height - scrollView.frame.size.height - 100) else { return }
+        guard semaphore, position > (collectionView.contentSize.height - scrollView.frame.size.height - 100),
+        InternetConnection.isConnected() else { return }
         lockUI()
         if searchingText != "" {
             pageCounter += 1

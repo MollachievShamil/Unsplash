@@ -25,8 +25,8 @@ protocol MainPresenterProtocol: AnyObject {
 class MainPresenter: MainPresenterProtocol {
     
     weak var view: MainViewProtocol?
-    let router: RouterProtocol
-    var networkService: NetworkingProtocol
+    private let router: RouterProtocol
+    private var networkService: NetworkingProtocol
     var photoModels: [PhotoModel] = []
     
     init(view: MainViewProtocol, router: RouterProtocol, networkService: NetworkingProtocol) {
@@ -83,7 +83,7 @@ class MainPresenter: MainPresenterProtocol {
         return UIImage(data: data)
     }
     
-    func getImages() {
+    private func getImages() {
         let dispatchGroup = DispatchGroup()
         for (index, picture) in photoModels.enumerated() {
             dispatchGroup.enter()

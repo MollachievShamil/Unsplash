@@ -10,10 +10,10 @@ import UIKit
 class MainViewController: UIViewController {
     
     var presenter: MainPresenterProtocol!
-    var timer: Timer?
-    var semaphore = true
-    var searchingText = ""
-    var pageCounter = 1
+    private var timer: Timer?
+    private var semaphore = true
+    private var searchingText = ""
+    private var pageCounter = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
         setupSearchController()
     }
     
-    let indicatorActivity : UIActivityIndicatorView = {
+    private let indicatorActivity : UIActivityIndicatorView = {
         let indicatorActivity = UIActivityIndicatorView()
         indicatorActivity.style = .medium
         indicatorActivity.color = .black
@@ -32,7 +32,7 @@ class MainViewController: UIViewController {
         return indicatorActivity
     }()
     
-    let collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(MainViewControllerCell.self, forCellWithReuseIdentifier: "cell")
@@ -40,7 +40,7 @@ class MainViewController: UIViewController {
         return collectionView
     }()
     
-    func createCustomButton(selector: Selector) -> UIBarButtonItem {
+    private func createCustomButton(selector: Selector) -> UIBarButtonItem {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "arrow.clockwise"), for: .normal)
         button.tintColor = .black
@@ -58,7 +58,7 @@ class MainViewController: UIViewController {
     }
     
     @objc
-    func refreshButtonTapped() {
+    private func refreshButtonTapped() {
         if semaphore {
             lockUI()
             presenter.fetchPhotoModels()
@@ -66,14 +66,14 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Paginator
-    func lockUI() {
+    private func lockUI() {
         semaphore = false
         indicatorActivity.startAnimating()
         navigationItem.rightBarButtonItem = nil
         searchController.searchBar.isHidden = true
     }
     
-    func unlockUI() {
+    private func unlockUI() {
         semaphore = true
         indicatorActivity.stopAnimating()
         indicatorActivity.hidesWhenStopped = true
@@ -82,7 +82,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Delegates
-    func setDelegate() {
+    private func setDelegate() {
         collectionView.dataSource = self
         collectionView.delegate = self
         searchController.searchBar.delegate = self
@@ -165,8 +165,7 @@ extension MainViewController: UIScrollViewDelegate {
 
 // MARK: - Constraints
 extension MainViewController {
-    func setConstraints() {
-        
+    private func setConstraints() {
         view.addSubview(collectionView)
         collectionView.addSubview(indicatorActivity)
         

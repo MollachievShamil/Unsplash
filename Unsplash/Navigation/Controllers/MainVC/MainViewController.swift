@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
         setDelegate()
         setConstraints()
         setupSearchController()
+        presenter.fetchPhotoModels()
     }
 
     let collectionView: UICollectionView = {
@@ -44,20 +45,31 @@ class MainViewController: UIViewController {
 
 // MARK: - Presenter Delegate
 extension MainViewController: MainViewProtocol {
+    func sucsess() {
+        collectionView.reloadData()
+    }
     
+    func reloadCollectionView() {
+        collectionView.reloadData()
+    }
 }
 
 // MARK: - Collection View Delegates
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return presenter.photoModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainViewControllerCell
-        cell.imageView.image = UIImage(systemName: "trash")
+        cell.imageView.image = presenter.makeImage(img: presenter.photoModels[indexPath.row].picture)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = presenter.photoModels[indexPath.row]
+        presenter.goToDetailsModule(model: model)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

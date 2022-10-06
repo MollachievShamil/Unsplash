@@ -8,7 +8,8 @@
 import Foundation
 
 protocol NetworkingProtocol {
-    
+    func fetchModels(completion: @escaping([PhotoModel]?) -> Void)
+    func fetcImage(from pictureModel: PhotoModel, response: @escaping(Data?)-> Void)
 }
 
 class Networking: NetworkingProtocol {

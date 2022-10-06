@@ -12,6 +12,7 @@ class DetailsViewController: UIViewController {
     var presenter: DetailsPresenterProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .brown
     }
 }
 

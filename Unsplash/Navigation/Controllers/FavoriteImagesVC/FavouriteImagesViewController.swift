@@ -61,7 +61,7 @@ extension FavouriteImagesViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FavoriteTableViewCell
         cell.nameLabel.text = presenter?.fetchName(index: indexPath.row)
-        cell.photoImageView.image = presenter?.makeImage(ind: indexPath.row)
+        cell.photoImageView.image = presenter?.getImageForCell(ind: indexPath.row)
         return cell
     }
     

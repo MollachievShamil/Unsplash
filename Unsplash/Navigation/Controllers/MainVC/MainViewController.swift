@@ -119,7 +119,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainViewControllerCell
-        cell.imageView.image = presenter?.makeImage(img: presenter?.photoModels[indexPath.row].picture)
+        cell.imageView.image = presenter?.getImageForCell(img: presenter?.photoModels[indexPath.row].picture)
         return cell
     }
     

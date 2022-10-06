@@ -39,7 +39,7 @@ class DetailsPresenter: DetailsPresenterProtocol {
         downloadPhoto()
     }
     
-// MARK: - Work With Realm
+    // MARK: - Work With Realm
     func imageExistInRealm(model: StorageModel) -> Bool {
         return storage.imageExistInRealm(model: model)
     }
@@ -50,12 +50,8 @@ class DetailsPresenter: DetailsPresenterProtocol {
     
     // MARK: - set lables
     func getURL() -> String {
-        let item = model.urls?.small
-        if let item = item {
-            return item
-        } else {
-            return " .......... "
-        }
+        guard let item = model.urls?.small else { return "" }
+        return item
     }
     
     func getData() -> Data {
@@ -67,41 +63,24 @@ class DetailsPresenter: DetailsPresenterProtocol {
     }
     
     func getNameLabel() -> String {
-        let item = model.user?.name
-        if let item = item {
-            return item
-        } else {
-            return " .......... "
-        }
+        guard let item = model.user?.name else { return "" }
+        return item
     }
     
     func getDateOfCreationLabel() -> String {
-        let item = model.createdAt
-        if let item = item {
-            let formattedDate = setDateFormat(date: item)
-            return formattedDate
-        } else {
-            return " .......... "
-        }
+        guard let item = model.createdAt else { return "" }
+        let formattedDate = setDateFormat(date: item)
+        return formattedDate
     }
     
     func getLocationLabel() -> String {
-        let item = model.user?.location
-        if let item = item {
-            return item
-        } else {
-            return " .......... "
-        }
+        guard let item = model.user?.location else { return "" }
+        return item
     }
     
     func getDownloadsLabel() -> String {
-        let item = model.downloads
-        
-        if let item = item {
-            return "Downloaded \(String(item)) times"
-        } else {
-            return ""
-        }
+        guard let item = model.downloads else { return ""}
+        return "Downloaded \(String(item)) times"
     }
     
     // MARK: - Transform data from model in Images

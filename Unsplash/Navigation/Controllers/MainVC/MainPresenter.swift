@@ -16,7 +16,7 @@ protocol MainViewProtocol: AnyObject {
 protocol MainPresenterProtocol: AnyObject {
     func fetchPhotoModels()
     func goToDetailsModule(model: PhotoModel)
-    func makeImage(img: Data?) -> UIImage?
+    func getImageForCell(img: Data?) -> UIImage?
     var photoModels: [PhotoModel] {get set}
     func fetchSearchingPhotoModels(name: String)
     func addMorePhotoForInfinityScroll()
@@ -51,7 +51,7 @@ class MainPresenter: MainPresenterProtocol {
             guard let model = model else { return }
             let photoModel = model.results
             self?.photoModels.append(contentsOf: photoModel)
-            self?.getImages()
+            self?.fetchImages()
         })
     }
 
@@ -60,7 +60,7 @@ class MainPresenter: MainPresenterProtocol {
             guard let model = model else { return }
             let photoModel = model.results
             self?.photoModels.append(contentsOf: photoModel)
-            self?.getImages()
+            self?.fetchImages()
         })
     }
     
@@ -71,7 +71,7 @@ class MainPresenter: MainPresenterProtocol {
         networkService.fetchModels { [weak self] model in
             guard let model = model else { return }
             self?.photoModels = model
-            self?.getImages()
+            self?.fetchImages()
         }
     }
  
@@ -79,18 +79,18 @@ class MainPresenter: MainPresenterProtocol {
         networkService.fetchModels { [weak self] model in
             guard let model = model else { return }
             self?.photoModels.append(contentsOf: model)
-            self?.getImages()
+            self?.fetchImages()
         }
     }
 
     // MARK: - Fetching Photo data and Transform them in Images
     
-    func makeImage(img: Data?) -> UIImage? {
+    func getImageForCell(img: Data?) -> UIImage? {
         guard let data = img else { return UIImage(systemName: "questionmark") }
         return UIImage(data: data)
     }
     
-    private func getImages() {
+    private func fetchImages() {
         let dispatchGroup = DispatchGroup()
         for (index, picture) in photoModels.enumerated() {
             dispatchGroup.enter()

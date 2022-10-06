@@ -10,6 +10,7 @@ import UIKit
 protocol MainViewProtocol: AnyObject {
     func sucsess()
     func reloadCollectionView()
+    func showAlert(title: String, message: String)
 }
 
 protocol MainPresenterProtocol: AnyObject {
@@ -20,6 +21,7 @@ protocol MainPresenterProtocol: AnyObject {
     func fetchSearchingPhotoModels(name: String)
     func addMorePhotoForInfinityScroll()
     func addMorePhotoForInfinityScrollWithSearching(name: String, page: Int)
+    func checkForInternet()
 }
 
 class MainPresenter: MainPresenterProtocol {
@@ -33,7 +35,12 @@ class MainPresenter: MainPresenterProtocol {
         self.view = view
         self.router = router
         self.networkService = networkService
-        fetchPhotoModels()
+        checkForInternet()
+    }
+    
+    func checkForInternet() {
+        guard !InternetConnection.isConnected() else { fetchPhotoModels(); return }
+        view?.showAlert(title: "Warning", message: "no internet connection")
     }
     
     // MARK: - Searching Photos

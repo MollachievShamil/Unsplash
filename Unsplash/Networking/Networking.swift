@@ -16,12 +16,12 @@ protocol NetworkingProtocol {
 class Networking: NetworkingProtocol {
 
     func fetchSearchingModelsOnPage(searchText: String, page: Int, completion: @escaping(SearchModel?) -> Void) {
-        let urlString = "https://api.unsplash.com//search/photos?page=\(page)&per_page=20&query=\(searchText)&client_id=9_x587DuHw9DllgT4tNfNTY3V8LrB6Ny92D5LiKAjmI#"
+        let urlString = "https://api.unsplash.com//search/photos?page=\(page)&per_page=20&query=\(searchText)&client_id=jgPj2sLUqyLS_B-O4Gol1bmcPCWBT0iP2NunCmNOZMQ"
         fetchData(urlString: urlString, responce: completion)
     }
     
     func fetchModels(completion: @escaping([PhotoModel]?) -> Void) {
-        let urlString = "https://api.unsplash.com/photos/random/?count=10&client_id=9_x587DuHw9DllgT4tNfNTY3V8LrB6Ny92D5LiKAjmI#"
+        let urlString = "https://api.unsplash.com/photos/random/?count=10&client_id=jgPj2sLUqyLS_B-O4Gol1bmcPCWBT0iP2NunCmNOZMQ"
         fetchData(urlString: urlString, responce: completion)
     }
     

@@ -9,7 +9,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
-    var presenter: DetailsPresenterProtocol!
+    var presenter: DetailsPresenterProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +70,7 @@ class DetailsViewController: UIViewController {
     
     private func setButton() {
         let model = makeModel()
+        guard let presenter = presenter else { return }
         if presenter.imageExistInRealm(model: model) {
             button.backgroundColor = .red
             button.setTitle("Delete", for: .normal)
@@ -96,6 +97,7 @@ class DetailsViewController: UIViewController {
     }
     
     private func setupLabels() {
+        guard let presenter = presenter else { return }
         autorNameLabel.text = "Name of author: " + presenter.getNameLabel()
         dateOfCreationLabel.text = "Photo was created: " + presenter.getDateOfCreationLabel()
         locationLabel.text = "Photo was made in: " + presenter.getLocationLabel()
@@ -104,6 +106,7 @@ class DetailsViewController: UIViewController {
     
     private func setAlert() {
         let model = makeModel()
+        guard let presenter = presenter else { return }
         if presenter.imageExistInRealm(model: model) {
             alertOk(title: "Add", message: "Photo sucsessfuly added")
         } else {
@@ -112,6 +115,7 @@ class DetailsViewController: UIViewController {
     }
     
     private func makeModel() -> StorageModel {
+        guard let presenter = presenter else { return StorageModel()}
         let model = StorageModel()
         model.name = presenter.getNameLabel()
         model.pictureData = presenter.getData()
@@ -125,7 +129,7 @@ class DetailsViewController: UIViewController {
     @objc
     private func addToFavorite() {
         let model = makeModel()
-        presenter.saveDeleteFromRealm(model: model)
+        presenter?.saveDeleteFromRealm(model: model)
         setAlert()
         setButton()
     }

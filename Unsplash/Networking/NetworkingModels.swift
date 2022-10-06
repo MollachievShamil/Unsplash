@@ -17,6 +17,10 @@ struct PhotoModel: Codable {
     let downloads: Int?
     let user: User?
     var picture: Data?
+    
+    private enum CodingKeys : String, CodingKey {
+          case urls, createdAt = "created_at", downloads, user, picture
+      }
 }
 
 struct Urls: Codable {

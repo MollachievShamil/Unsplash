@@ -106,7 +106,6 @@ class DetailsViewController: UIViewController {
         let model = makeModel()
         if presenter.imageExistInRealm(model: model) {
             alertOk(title: "Add", message: "Photo sucsessfuly added")
-            
         } else {
             alertOk(title: "Delete", message: "Photo sucsessfuly deleted")
         }

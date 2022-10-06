@@ -15,7 +15,7 @@ protocol FavoriteImagesPresenterProtocol: AnyObject {
     func goToDetailsModule(ind: Int)
     func fetchName(index: Int) -> String
     func getNumresOfCells() -> Int
-    func makeImage(ind: Int) -> UIImage
+    func getImageForCell(ind: Int) -> UIImage
     var images: [Data] {get set}
     func deleteWithSwipe(ind: Int)
 }
@@ -62,7 +62,7 @@ class FavoriteImagesPresenter: FavoriteImagesPresenterProtocol {
     }
     
     // MARK: - Transform data from model in Images
-    func makeImage(ind: Int) -> UIImage {
+    func getImageForCell(ind: Int) -> UIImage {
         let data = storage.picturesInRealm[ind].pictureData
         return UIImage(data: data) ?? UIImage()
     }

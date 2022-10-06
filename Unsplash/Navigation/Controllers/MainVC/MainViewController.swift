@@ -59,6 +59,7 @@ class MainViewController: UIViewController {
     
     @objc
     private func refreshButtonTapped() {
+        presenter?.checkForInternet()
         if semaphore {
             lockUI()
             presenter?.fetchPhotoModels()
@@ -79,6 +80,7 @@ class MainViewController: UIViewController {
         indicatorActivity.hidesWhenStopped = true
         navigationItem.rightBarButtonItem = createCustomButton(selector: #selector(refreshButtonTapped))
         searchController.searchBar.isHidden = false
+        
     }
     
     // MARK: - Delegates
@@ -91,6 +93,13 @@ class MainViewController: UIViewController {
 
 // MARK: - Presenter Delegate
 extension MainViewController: MainViewProtocol {
+    func showAlert(title: String, message: String) {
+        DispatchQueue.main.async { [ weak self ] in
+            self?.alertOk(title: title, message: message)
+            self?.unlockUI()
+        }
+    }
+    
     func sucsess() {
         collectionView.reloadData()
         unlockUI()
@@ -137,6 +146,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        presenter?.checkForInternet()
         presenter?.fetchSearchingPhotoModels(name: searchBar.text ?? "")
     }
     
@@ -150,7 +160,8 @@ extension MainViewController: UISearchBarDelegate {
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        guard semaphore,  position > (collectionView.contentSize.height - scrollView.frame.size.height - 100) else { return }
+        guard position >= 0 else { return }
+        guard semaphore, position > (collectionView.contentSize.height - scrollView.frame.size.height - 100) else { return }
         lockUI()
         if searchingText != "" {
             pageCounter += 1

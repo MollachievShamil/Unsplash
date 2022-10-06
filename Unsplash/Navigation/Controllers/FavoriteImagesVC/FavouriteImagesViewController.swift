@@ -43,7 +43,7 @@ class FavouriteImagesViewController: UIViewController {
     }
 }
 
-// MARK: -  PresenterProtocol
+// MARK: - PresenterProtocol
 extension FavouriteImagesViewController: FavoriteImagesViewProtocol {
     func sucsess() {
         tableView.reloadData()

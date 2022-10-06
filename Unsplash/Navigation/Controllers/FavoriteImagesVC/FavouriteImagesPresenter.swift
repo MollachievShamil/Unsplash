@@ -75,8 +75,8 @@ class FavoriteImagesPresenter: FavoriteImagesPresenterProtocol {
     }
     
     // MARK: - Navigation
-    func goToDetailsModule(ind: Int){
+    func goToDetailsModule(ind: Int) {
         let model = createModel(ind: ind)
-        router.showDetailsViewController()
+        router.showDetailsViewController(model: model)
     }
 }

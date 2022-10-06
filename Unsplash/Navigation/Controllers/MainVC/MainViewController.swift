@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var presenter: MainPresenterProtocol!
+    var presenter: MainPresenterProtocol?
     private var timer: Timer?
     private var semaphore = true
     private var searchingText = ""
@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
     private func refreshButtonTapped() {
         if semaphore {
             lockUI()
-            presenter.fetchPhotoModels()
+            presenter?.fetchPhotoModels()
         }
     }
     
@@ -105,18 +105,18 @@ extension MainViewController: MainViewProtocol {
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.photoModels.count
+        return presenter?.photoModels.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MainViewControllerCell
-        cell.imageView.image = presenter.makeImage(img: presenter.photoModels[indexPath.row].picture)
+        cell.imageView.image = presenter?.makeImage(img: presenter?.photoModels[indexPath.row].picture)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let model = presenter.photoModels[indexPath.row]
-        presenter.goToDetailsModule(model: model)
+        guard let model = presenter?.photoModels[indexPath.row] else { return }
+        presenter?.goToDetailsModule(model: model)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -137,7 +137,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 extension MainViewController: UISearchBarDelegate {
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        presenter.fetchSearchingPhotoModels(name: searchBar.text ?? "")
+        presenter?.fetchSearchingPhotoModels(name: searchBar.text ?? "")
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -150,15 +150,13 @@ extension MainViewController: UISearchBarDelegate {
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let position = scrollView.contentOffset.y
-        if position > (collectionView.contentSize.height - scrollView.frame.size.height - 100) {
-            guard semaphore else { return }
-            lockUI()
-            if searchingText != "" {
-                pageCounter += 1
-                presenter.addMorePhotoForInfinityScrollWithSearching(name: searchingText, page: pageCounter)
-            } else {
-                presenter.addMorePhotoForInfinityScroll()
-            }
+        guard semaphore,  position > (collectionView.contentSize.height - scrollView.frame.size.height - 100) else { return }
+        lockUI()
+        if searchingText != "" {
+            pageCounter += 1
+            presenter?.addMorePhotoForInfinityScrollWithSearching(name: searchingText, page: pageCounter)
+        } else {
+            presenter?.addMorePhotoForInfinityScroll()
         }
     }
 }

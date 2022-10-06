@@ -8,7 +8,7 @@ import UIKit
 
 protocol ViewControllerFactoryProtocol: AnyObject {
     func createTabBar() -> UITabBarController
-    func createDetailsViewController(router: RouterProtocol) -> UIViewController
+    func createDetailsViewController(router: RouterProtocol, model: PhotoModel) -> UIViewController
 }
 
 class ViewControllerFactory: ViewControllerFactoryProtocol {
@@ -51,10 +51,10 @@ class ViewControllerFactory: ViewControllerFactoryProtocol {
         return tabBarController
     }
     
-    func createDetailsViewController(router: RouterProtocol) -> UIViewController {
+    func createDetailsViewController(router: RouterProtocol, model: PhotoModel) -> UIViewController {
         let view = DetailsViewController()
         let storage = Storage()
-        let presenter = DetailsPresenter(view: view, router: router, storage: storage)
+        let presenter = DetailsPresenter(view: view, router: router, storage: storage, model: model)
         view.presenter = presenter
         return view
     }

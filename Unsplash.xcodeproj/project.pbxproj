@@ -25,6 +25,8 @@
 		B36B0C6728EEC463009A566C /* NetworkingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6628EEC463009A566C /* NetworkingModels.swift */; };
 		B36B0C6928EED830009A566C /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6828EED830009A566C /* FavoriteTableViewCell.swift */; };
 		B36B0C6B28EED968009A566C /* StorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6A28EED968009A566C /* StorageModel.swift */; };
+		B36B0C6D28EEDED0009A566C /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6C28EEDED0009A566C /* UIViewController + Extension.swift */; };
+		B36B0C6F28EEDF2F009A566C /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6E28EEDF2F009A566C /* UIStackView + Extension.swift */; };
 		C2DE054AA17C45AC06065E12 /* Pods_Unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C56A54BC503601F7AF1373 /* Pods_Unsplash.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		B36B0C6628EEC463009A566C /* NetworkingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModels.swift; sourceTree = "<group>"; };
 		B36B0C6828EED830009A566C /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		B36B0C6A28EED968009A566C /* StorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModel.swift; sourceTree = "<group>"; };
+		B36B0C6C28EEDED0009A566C /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		B36B0C6E28EEDF2F009A566C /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		C0967EFDC186A971790275B9 /* Pods-Unsplash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.release.xcconfig"; path = "Target Support Files/Pods-Unsplash/Pods-Unsplash.release.xcconfig"; sourceTree = "<group>"; };
 		F7C56A54BC503601F7AF1373 /* Pods_Unsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -187,6 +191,8 @@
 		B36B0C5728EEB85E009A566C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B36B0C6C28EEDED0009A566C /* UIViewController + Extension.swift */,
+				B36B0C6E28EEDF2F009A566C /* UIStackView + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,6 +343,8 @@
 				B33BDFC728EEA22A006AC09B /* Router.swift in Sources */,
 				B328E68928EE876E00510143 /* AppDelegate.swift in Sources */,
 				B328E68B28EE876E00510143 /* SceneDelegate.swift in Sources */,
+				B36B0C6D28EEDED0009A566C /* UIViewController + Extension.swift in Sources */,
+				B36B0C6F28EEDF2F009A566C /* UIStackView + Extension.swift in Sources */,
 				B36B0C5228EEB76B009A566C /* Storage.swift in Sources */,
 				B36B0C6328EEBE87009A566C /* DetailsPresenter.swift in Sources */,
 			);

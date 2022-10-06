@@ -101,6 +101,6 @@ class MainPresenter: MainPresenterProtocol {
     
     // MARK: - Navigation
     func goToDetailsModule(model: PhotoModel) {
-        router.showDetailsViewController()
+        router.showDetailsViewController(model: model)
     }
 }

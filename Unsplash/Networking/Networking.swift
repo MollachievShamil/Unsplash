@@ -8,11 +8,18 @@
 import Foundation
 
 protocol NetworkingProtocol {
-    
+    func fetchModels(completion: @escaping([PhotoModel]?) -> Void)
+    func fetcImage(from pictureModel: PhotoModel, response: @escaping(Data?) -> Void)
+    func fetchSearchingModelsOnPage(searchText: String, page: Int, completion: @escaping(SearchModel?) -> Void)
 }
 
 class Networking: NetworkingProtocol {
 
+    func fetchSearchingModelsOnPage(searchText: String, page: Int, completion: @escaping(SearchModel?) -> Void) {
+        let urlString = "https://api.unsplash.com//search/photos?page=\(page)&per_page=20&query=\(searchText)&client_id=9_x587DuHw9DllgT4tNfNTY3V8LrB6Ny92D5LiKAjmI#"
+        fetchData(urlString: urlString, responce: completion)
+    }
+    
     func fetchModels(completion: @escaping([PhotoModel]?) -> Void) {
         let urlString = "https://api.unsplash.com/photos/random/?count=10&client_id=9_x587DuHw9DllgT4tNfNTY3V8LrB6Ny92D5LiKAjmI#"
         fetchData(urlString: urlString, responce: completion)
@@ -58,7 +65,7 @@ class Networking: NetworkingProtocol {
     
     private func requestData(urlString: String, complition: @escaping (Result<Data, Error>) -> Void) {
         guard let url = URL(string: urlString) else { return }
-        URLSession.shared.dataTask(with: url) { data, _ , error in
+        URLSession.shared.dataTask(with: url) { data, _, error in
             DispatchQueue.main.async {
                 if let error = error {
                     complition(.failure(error))

@@ -21,6 +21,8 @@
 		B36B0C5F28EEBBE5009A566C /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C5E28EEBBE5009A566C /* MainPresenter.swift */; };
 		B36B0C6128EEBD15009A566C /* FavouriteImagesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6028EEBD15009A566C /* FavouriteImagesPresenter.swift */; };
 		B36B0C6328EEBE87009A566C /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6228EEBE87009A566C /* DetailsPresenter.swift */; };
+		B36B0C6528EEC194009A566C /* MainViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6428EEC194009A566C /* MainViewControllerCell.swift */; };
+		B36B0C6728EEC463009A566C /* NetworkingModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B0C6628EEC463009A566C /* NetworkingModels.swift */; };
 		C2DE054AA17C45AC06065E12 /* Pods_Unsplash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7C56A54BC503601F7AF1373 /* Pods_Unsplash.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 		B36B0C5E28EEBBE5009A566C /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		B36B0C6028EEBD15009A566C /* FavouriteImagesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteImagesPresenter.swift; sourceTree = "<group>"; };
 		B36B0C6228EEBE87009A566C /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		B36B0C6428EEC194009A566C /* MainViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerCell.swift; sourceTree = "<group>"; };
+		B36B0C6628EEC463009A566C /* NetworkingModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingModels.swift; sourceTree = "<group>"; };
 		C0967EFDC186A971790275B9 /* Pods-Unsplash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplash.release.xcconfig"; path = "Target Support Files/Pods-Unsplash/Pods-Unsplash.release.xcconfig"; sourceTree = "<group>"; };
 		F7C56A54BC503601F7AF1373 /* Pods_Unsplash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsplash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				B36B0C4D28EEB70F009A566C /* Networking.swift */,
+				B36B0C6628EEC463009A566C /* NetworkingModels.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 			children = (
 				B36B0C5828EEB882009A566C /* MainViewController.swift */,
 				B36B0C5E28EEBBE5009A566C /* MainPresenter.swift */,
+				B36B0C6428EEC194009A566C /* MainViewControllerCell.swift */,
 			);
 			path = MainVC;
 			sourceTree = "<group>";
@@ -316,6 +322,8 @@
 				B36B0C5928EEB882009A566C /* MainViewController.swift in Sources */,
 				B36B0C5D28EEB93E009A566C /* DetailsViewController.swift in Sources */,
 				B36B0C4E28EEB70F009A566C /* Networking.swift in Sources */,
+				B36B0C6728EEC463009A566C /* NetworkingModels.swift in Sources */,
+				B36B0C6528EEC194009A566C /* MainViewControllerCell.swift in Sources */,
 				B33BDFC528EEA219006AC09B /* ViewControllerFactory.swift in Sources */,
 				B36B0C5F28EEBBE5009A566C /* MainPresenter.swift in Sources */,
 				B33BDFC728EEA22A006AC09B /* Router.swift in Sources */,
